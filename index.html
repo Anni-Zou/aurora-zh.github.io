@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="通用自适应的推理增强系统">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unified Adapter</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" >
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Language
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://anni-zou.github.io/unified-adapter-en.github.io/">
+            English
+          </a>
+          <a class="navbar-item" href="https://anni-zou.github.io/unified-adapter-ch.github.io/">
+            中文
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">通用自适应的推理增强系统 (Unified-Adapter) </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://bcmi.sjtu.edu.cn/~zhangzs/">张倬胜</a>,</span>
+            <span class="author-block">
+              <a href="">邹安妮</a>,</span>
+            <span class="author-block">
+              <a href="https://bcmi.sjtu.edu.cn/~zhaohai/">赵海</a>
+            </span>
+            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">上海交通大学</span>
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/Anni123/Unified-Adapter"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-desktop"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Anni-Zou/Unified-Adapter"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+             
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/overview-zh.png" />
+      <h2 class="subtitle has-text-centered">
+        在当前大模型百花齐放的时代，如何有效地将大模型适配各类复杂推理任务仍是未完全探索的挑战。
+        思维链的出现激发了大模型在推理方面的潜力，但最新工作表明现有大模型多步推理依赖人工模版构造，
+        缺乏可靠知识依据，且亟需自我反思与纠正机制。为解决上述问题并提供一站式大模型适配方案，
+        本工作提出通用自适应的推理增强系统，具备任务自适应和过程全自动的特点，从知识检索、知识精炼
+        和知识纠正等多个维度增强系统的推理能力，并适配不同的大模型。该系统提供用户友好的结果可视化分析，
+        在大模型时代具有重要学术和应用价值。
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> 样例示范</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="1-carousel" class="carousel results-carousel">
+        <div class="item item-1">
+          <video
+            poster=""
+            id="1"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-identification_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-2">
+          <video
+            poster=""
+            id="2"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-construction_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-3">
+          <video
+            poster=""
+            id="3"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-retrieval_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-4">
+          <video
+            poster=""
+            id="4"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-refinement_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-5">
+          <video
+            poster=""
+            id="4"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-revision_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-6">
+          <video
+            poster=""
+            id="4"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-consistency_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-body">
+    <div class="container">
+      <div id="2-carousel" class="carousel results-carousel">
+        <div class="item item-8">
+          <video
+            poster=""
+            id="8"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-refinement_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-9">
+          <video
+            poster=""
+            id="9"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source src="./static/videos/self-revision_fast.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="item item-10">
+          <video
+            poster=""
+            id="10"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-consistency_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-11">
+          <video
+            poster=""
+            id="11"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-identification_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-12">
+          <video
+            poster=""
+            id="12"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source
+              src="./static/videos/self-construction_fast.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div class="item item-13">
+          <video
+            poster=""
+            id="13"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            height="100%"
+          >
+            <source src="./static/videos/self.retrieval_fast.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- System Workflow. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">系统流程</h2>
+        <div class="content has-text-justified">
+          <p>
+            本系统基于思维链提示学习技术，具备任务自适应和过程全自动的特点，有效将大模型适配多样化的任务场景。
+            系统的工作流程分为六个步骤：
+          </p>
+          <ol>
+            <li>
+              <b>问题自识别</b>: 用户输入问题，系统将自动识别问题类型并选择问题适配的提示语。
+            </li>
+            <li>
+              <b>样例自构建</b>: 系统根据问题类型对数据池中的问题进行聚类分类，自动构建提示样例，保证方法的高效益性和构建样例多样性。
+            </li>
+            <li>
+              <b>知识自抽取</b>: 系统根据输入问题的内容，从多源知识库中进行相关知识的抽取，提供多样化的知识依据，有效缓解幻觉问题。
+            </li>
+            <li>
+              <b>知识自精炼</b>: 系统对多源知识进行融合与精炼，以实现不同源知识之间的双向核对与过滤，提高知识增强的可靠性。
+            </li>
+            <li>
+              <b>推理自修正</b>: 系统根据自动抽取的高质量知识，对原有的思维链进行重写修正，以提高其准确性和逻辑性。
+            </li>
+            <li>
+              <b>输出自组织</b>: 系统采用自洽性解码策略，在过程中多次采样思维链（包含最初及修正的思维链）。通过模拟人类发散性的思考方式，自动组织输出，并选择自洽性最高的答案作为最终答案。
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!--/ System Workflow. -->
+
+
+    <!-- Paper video. -->
+    <!--<div class="columns is-centered has-text-centered">-->
+      <!--<div class="column is-four-fifths">-->
+        <!--<h2 class="title is-3">Video</h2>-->
+        <!--<div class="publication-video">-->
+          <!--<iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+                  <!--frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+
+    <!-- System Workflow. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">相关工作</h2>
+        <img src="./static/images/related_work_comparison.png" />
+
+        <div class="content has-text-justified">
+          <p>
+            近期工作主要从三个方面对思维链系统进行增强:
+          </p>
+          <ul>
+            <li>
+              <b>样例选择</b>: <a href="https://arxiv.org/abs/2210.03493">自动思维链提示 Auto-CoT</a> 和 <a href="https://arxiv.org/abs/2212.08635">自提示学习 Self-Prompting</a> 通过自动构造多样化、任务适应的提示样例，引导大模型进行各类推理。
+            </li>
+            <li>
+              <b>推理增强</b>: 知识增强方法例如<a href="https://arxiv.org/abs/2305.11738">CRITIC</a>, <a href="https://arxiv.org/abs/2305.03268">Verify-and-Edit</a> and <a href="https://arxiv.org/abs/2304.13007">多链推理 Multi-Chain Reasoning (MCR)</a> 通过与外部知识的交互对推理链进行修正。
+            </li>
+            <li>
+              <b>解码策略</b>: <a href="https://arxiv.org/abs/2203.11171">自洽思维链学习 Self-Consistency</a> 从解码器中抽样生成多样化的推理路径进行集合。
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <!--/ System Workflow. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+
+    <!-- System Workflow. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">实验结果</h2>
+        <img src="./static/images/related_work_comparison.png" />
+
+        <div class="content has-text-justified">
+          <p>
+            对于直接采用问答的应用方式，本系统可大幅提升模型的推理精度和可解释性。
+          </p>
+          
+
+        </div>
+      </div>
+    </div>
+    <!--/ System Workflow. -->
+
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+     
+      <a class="icon-link" href="https://github.com/Anni-Zou/Unified-Adapter" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            本网站采用 <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>进行许可。
+          </p>
+          <p>
+            这意味着你可以自由借用本网站的<a
+              href="https://github.com/nerfies/nerfies.github.io">源代码</a>，
+              我们只请求您在页脚链接回本页面。请记得删除网站页眉中您不希望在自己网站上使用的分析代码。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
