@@ -62,10 +62,10 @@
           语言
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://anni-zou.github.io/unified-adapter-en.github.io/">
+          <a class="navbar-item" href="https://anni-zou.github.io/aurora-en.github.io/">
             English
           </a>
-          <a class="navbar-item" href="https://anni-zou.github.io/unified-adapter-ch.github.io/">
+          <a class="navbar-item" href="https://anni-zou.github.io/aurora-ch.github.io/">
             中文
           </a>
         </div>
@@ -81,12 +81,12 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">通用自适应的推理增强系统 (Unified-Adapter) </h1>
+          <h1 class="title is-1 publication-title">通用自适应的推理增强系统 (AuRoRA) </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://bcmi.sjtu.edu.cn/~zhangzs/">张倬胜</a>,</span>
-            <span class="author-block">
               <a href="">邹安妮</a>,</span>
+              <span class="author-block">
+                <a href="https://bcmi.sjtu.edu.cn/~zhangzs/">张倬胜</a>,</span>
             <span class="author-block">
               <a href="https://bcmi.sjtu.edu.cn/~zhaohai/">赵海</a>
             </span>
@@ -102,7 +102,7 @@
             <div class="publication-links">
               <!-- Demo Link. -->
               <span class="link-block">
-                <a href="https://huggingface.co/spaces/Anni123/Unified-Adapter"
+                <a href="https://huggingface.co/spaces/Anni123/AuRoRA"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-desktop"></i>
@@ -112,7 +112,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://youtu.be/UIr2FhyYgqE"
+                <a href="https://youtu.be/-f2dDMSX7NM"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -144,12 +144,7 @@
     <div class="hero-body">
       <img src="./static/images/overview-zh.png" />
       <h2 class="subtitle has-text-centered">
-        在当前大模型百花齐放的时代，如何有效地将大模型适配各类复杂推理任务仍是未完全探索的挑战。
-        思维链的出现激发了大模型在推理方面的潜力，但最新工作表明现有大模型多步推理依赖人工模版构造，
-        缺乏可靠知识依据，且亟需自我反思与纠正机制。为解决上述问题并提供一站式大模型适配方案，
-        本工作提出通用自适应的推理增强系统，具备任务自适应和过程全自动的特点，从知识检索、知识精炼
-        和知识纠正等多个维度增强系统的推理能力，并适配不同的大模型。该系统提供用户友好的结果可视化分析，
-        在大模型时代具有重要学术和应用价值。
+        在当前大模型百花齐放的时代，如何有效地将大模型适配各类复杂推理任务仍是未完全探索的挑战。思维链的出现激发了大模型在推理方面的潜力，但最新工作表明现有大模型多步推理依赖人工模版构造，缺乏可靠知识依据，且亟需自我反思与纠正机制。为解决上述问题并提供一站式大模型适配方案，本工作提出<b>通用自适应的推理增强系统（AuRoRA）</b>，具备任务自适应和过程全自动的特点，从知识检索、知识精炼和知识纠正等多个维度增强系统的推理能力，并适配不同的大模型。该系统提供用户友好的结果可视化分析，在大模型时代具有重要学术和应用价值。
       </h2>
     </div>
   </div>
@@ -169,7 +164,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
-      <div id="1-carousel" class="carousel results-carousel">
+     
         <div class="item item-1">
           <video
             poster=""
@@ -182,202 +177,15 @@
             height="100%"
           >
             <source
-              src="./static/videos/self-identification_fast.mp4"
+              src="./static/videos/total_fast.mp4"
               type="video/mp4"
             />
           </video>
-        </div>
-        <div class="item item-2">
-          <video
-            poster=""
-            id="2"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-construction_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-3">
-          <video
-            poster=""
-            id="3"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-retrieval_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-4">
-          <video
-            poster=""
-            id="4"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-refinement_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-5">
-          <video
-            poster=""
-            id="4"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-revision_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-6">
-          <video
-            poster=""
-            id="4"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-consistency_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+
       </div>
     </div>
   </div>
 
-  <div class="hero-body">
-    <div class="container">
-      <div id="2-carousel" class="carousel results-carousel">
-        <div class="item item-8">
-          <video
-            poster=""
-            id="8"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-refinement_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-9">
-          <video
-            poster=""
-            id="9"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source src="./static/videos/self-revision_fast.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="item item-10">
-          <video
-            poster=""
-            id="10"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-consistency_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-11">
-          <video
-            poster=""
-            id="11"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-identification_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-12">
-          <video
-            poster=""
-            id="12"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source
-              src="./static/videos/self-construction_fast.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div class="item item-13">
-          <video
-            poster=""
-            id="13"
-            autoplay
-            controls
-            muted
-            loop
-            playsinline
-            height="100%"
-          >
-            <source src="./static/videos/self.retrieval_fast.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 
@@ -390,8 +198,7 @@
         <h2 class="title is-3">系统流程</h2>
         <div class="content has-text-justified">
           <p>
-            本系统基于思维链提示学习技术，具备任务自适应和过程全自动的特点，有效将大模型适配多样化的任务场景。
-            系统的工作流程分为六个步骤：
+            本系统基于思维链提示学习技术，具备任务自适应和过程全自动的特点，有效将大模型适配多样化的任务场景。系统的工作流程分为六个步骤：
           </p>
           <ol>
             <li>
